@@ -24,8 +24,13 @@ struct PreviewApp: App {
     var body: some Scene {
         Window("Broom Preview", id: "preview") {
             ZStack {
-                LinearGradient(colors: [.blue, .white, .gray, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
-                panel
+                // `--readme` puts the glass over one even colour for the README's images; otherwise a varied backdrop shows what the glass does.
+                if Self.isReadmeCapture {
+                    Color(white: 0.95)
+                } else {
+                    LinearGradient(colors: [.blue, .white, .gray, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
+                }
+                scaledPanel
                     .padding(24)
             }
             // `--dark` shows the dark appearance whatever the system is set to.
@@ -41,6 +46,8 @@ struct PreviewApp: App {
                 Task {
                     try? await Task.sleep(for: .seconds(1))
                     if let window = NSApplication.shared.windows.first(where: \.isVisible), let screen = window.screen {
+                        // A README image shows no text cursor or selected text in the search field.
+                        if Self.isReadmeCapture { window.makeFirstResponder(nil) }
                         // The frame is printed from the top-left, as `screencapture -R` takes it.
                         let frame = window.frame
                         print("window \(window.windowNumber)")
@@ -66,6 +73,27 @@ struct PreviewApp: App {
             }
         }
         .windowResizability(.contentSize)
+    }
+
+    /// `--readme`: an even backdrop and nothing focused, for the README's screenshots and video.
+    private static let isReadmeCapture = CommandLine.arguments.contains("--readme")
+
+    /// `--scale <factor>` draws the panel larger, so a screen capture of it stays sharp when shown bigger than life.
+    private static let scale: CGFloat = {
+        let arguments = CommandLine.arguments
+        guard let index = arguments.firstIndex(of: "--scale"), arguments.indices.contains(index + 1),
+              let value = Double(arguments[index + 1]), value > 0 else { return 1 }
+        return value
+    }()
+
+    @ViewBuilder private var scaledPanel: some View {
+        if Self.scale == 1 {
+            panel
+        } else {
+            panel
+                .scaleEffect(Self.scale, anchor: .topLeading)
+                .frame(width: BroomStyle.popoverWidth * Self.scale, height: BroomStyle.popoverHeight * Self.scale, alignment: .topLeading)
+        }
     }
 
     @ViewBuilder private var panel: some View {
