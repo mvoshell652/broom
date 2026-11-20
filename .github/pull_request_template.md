@@ -2,6 +2,6 @@
 
 ## How you checked it
 
-- [ ] `swift test` passes
+- [ ] `scripts/test.sh` passes
 - [ ] A test covers the change
 - [ ] Screenshot attached, if the popover or settings changed
