@@ -4,7 +4,7 @@ import SwiftUI
 /// The popover as the running app shows it: live data, the actions model, the stop confirmation and the keyboard.
 struct PopoverContainer: View {
     let environment: AppEnvironment
-    @State private var tab = PopoverTab.live
+    @State private var tab = PopoverTab.inbox
     /// The session the arrow keys are on.
     @State private var selectedID: String?
     @FocusState private var isFocused: Bool
