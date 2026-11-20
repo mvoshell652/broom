@@ -20,3 +20,23 @@ jobs:
         run: swift test
       - name: Build the app
         run: scripts/make-app.sh build
+
+  # Builds the app with Apple's Command Line Tools instead of Xcode, the much smaller download a user installs with
+  # `xcode-select --install`. If this passes, installing Broom needs no Xcode.
+  build-with-command-line-tools:
+    runs-on: macos-26
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Library/Developer/CommandLineTools
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show toolchain
+        run: |
+          test -d "$DEVELOPER_DIR" || { echo "No Command Line Tools at $DEVELOPER_DIR"; exit 1; }
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version || true
+          xcrun --show-sdk-version
+          swift --version
+      - name: Find Swift the way install.sh does
+        run: xcrun --find swift
+      - name: Build the app
+        run: scripts/make-app.sh build
