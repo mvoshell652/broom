@@ -6,7 +6,7 @@
 
 You have five Claude Code sessions open. One stopped ten minutes ago to ask a question, one finished while you were in a meeting, and three are still working. Broom tells you which is which in one glance, and takes you straight to the one that is waiting.
 
-<img src="docs/live.png" width="420" alt="Broom's popover on the Live tab. Waiting on you: a session asking whether to add 42 stores, with Open chat and Snooze 1h. Running: three sessions with their project, step 6 of 9 and a progress bar, and a scheduled task. Done since you looked: one session finished 4 minutes ago. The footer reads 7 open, 4 agents, 1 scheduled, with Stop all agents.">
+<img src="docs/demo.gif" width="420" alt="A 20-second tour of Broom with sample data. Live shows a session waiting on you with its question, three running sessions with progress, and one done. Inbox shows possible duplicates, open loops and quiet projects. The weekly sweep shows a card to merge three duplicate chats. History lists changes by day. Typing ranking weights in the search field lists four matching past chats.">
 
 ```
 d=$(mktemp -d) && git clone --depth 1 https://github.com/mvoshell652/broom "$d" && sh "$d/install.sh"
@@ -29,11 +29,6 @@ Free and open source.
 **Every past chat, searchable.** Press ⌥⌘B anywhere and find a chat by what you typed or what Claude replied, even when you remember the idea but not the words.
 
 **A tidy history.** The Inbox points out chats you started twice, chats you left on a question or a "later", and projects that have gone quiet. Merge, mark done or archive in a click, and undo anything from History for 30 days.
-
-<p>
-<img src="docs/inbox.png" width="380" alt="The Inbox tab: a possible-duplicates card about 3 chats on Supabase RLS policies with Review and merge and Not the same; two open loops; and Quiet for 3 months with mobile, 2 chats, and an Archive button.">
-<img src="docs/history.png" width="380" alt="The History tab: Last swept 6 days ago; Today, with Marked Send vendor follow-ups done and Merged 2 chats in mobile; Yesterday, with Archived 2 chats in api-server; and a line saying to right-click a change to undo it.">
-</p>
 
 ## Install
 
