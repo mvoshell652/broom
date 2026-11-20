@@ -20,21 +20,47 @@ Broom started in a LinkedIn thread. A product designer wished Claude had a "clea
 
 Those two complaints became Broom's two halves: **Live** for the sessions open right now, and the **Inbox** for everything before them.
 
-## What you get
+## A tour
 
-**A count in the menu bar, and an amber dot when a session is waiting.** You stop checking terminals to see whether anything needs you.
+Broom lives in the menu bar. Click the broom and a popover opens with a search field and three tabs: Live, Inbox and History.
 
-**The question, not just the alert.** A waiting session shows what it asked, so you can decide before you switch. **Open chat** brings its terminal or Claude app window to the front. A session that has ended reopens in your terminal.
+### The menu bar
 
-**Progress you can read.** A running session shows its project, how long it has run, and "step 6 of 9" with a bar when it keeps a task list.
+The broom shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
 
-**What finished while you were away.** Done sessions wait in their own section until you have looked. Quick one-question chats fade after a day.
+### Live: the sessions open right now
 
-**A clean stop.** Stop interrupts a session after you confirm. Sessions left idle for hours, and Claude Code processes that belong to no session, gather at the bottom so you can close them.
+Every Claude Code session on your Mac, from any terminal, your editor or the Claude desktop app, sorted by what it needs from you:
 
-**Every past chat, searchable.** Press ⌥⌘B anywhere and find a chat by what you typed or what Claude replied, even when you remember the idea but not the words.
+- **Waiting on you.** The session stopped to ask for a permission or an answer. The card shows what it asked and how long ago. **Open chat** jumps to it; **Snooze 1h** moves it out of the way and keeps it quiet.
+- **Running.** Each session shows its project and how long it has been working. When Claude keeps a task list, you also see "step 6 of 9" and a progress bar.
+- **Done since you looked.** Sessions that finished while you were away. They leave this section once you have seen them.
+- **Quick chats.** One question, no tools. They fade after a day, so they never crowd out real work.
+- **Quiet, still open** and **Claude Code with no session.** Sessions idle for two hours whose process is still alive, and Claude Code processes that belong to no session at all, each with **Stop**.
 
-**A tidy history.** The Inbox points out chats you started twice, chats you left on a question or a "later", and projects that have gone quiet. Merge, mark done or archive in a click, and undo anything from History for 30 days.
+The footer counts what is open, and **Stop all agents** interrupts every running or waiting session after you confirm. Stopping sends the same interrupt as pressing Control-C in the session, never a force quit.
+
+### Inbox: the chats behind them
+
+Broom reads your past Claude Code chats and raises the few worth a decision:
+
+- **Possible duplicates.** Chats from the last 30 days that open with the same prompt, or a very similar one. **Review & merge** lists them and folds them into one row, newest on top. **Not the same** stops Broom raising them together again.
+- **Open loops.** Chats that ended on a question from Claude, or on your own "I'll do this later", and have been quiet for a day or more. Tick the circle when it is done; it comes back if the chat picks up again.
+- **Quiet for 3 months.** Projects whose chats nobody has touched in 90 days, with **Archive** to take them out of the Inbox. Search still finds them.
+
+**Sweep now** goes through the same items one card at a time, like a weekly review: merge, archive or reopen, or skip a card until next week.
+
+### History
+
+Every merge, archive and "done" from the last 30 days, grouped by day, saying what changed and where. Open a row to see the chats it touched; right-click it to undo.
+
+### Search
+
+Press ⌥⌘B anywhere, or type in the popover's search field, to find any past chat by what you typed or what Claude replied. It matches the words, and the meaning when you remember the idea but not the words. Open a result to resume the chat, or copy the command that resumes it.
+
+### Notifications and settings
+
+Broom notifies you when a session is waiting on you, with **Open** and **Snooze 1h** on the notification. It can notify you when a session finishes too; that one is off until you turn it on. Settings also has opening at login, which terminal ended sessions reopen in, the Claude Code connection, and your search index.
 
 ## Install
 
