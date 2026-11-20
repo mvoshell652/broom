@@ -4,7 +4,7 @@
 
 Broom is a menu bar app for Claude Code. It finds the chats you started more than once, the ones left hanging and the ones gone quiet, and helps you tidy them. It also shows which open session is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you.
 
-https://github.com/user-attachments/assets/5336f455-8ff2-4be1-b472-2bb62e3299ae
+https://github.com/user-attachments/assets/d06d7507-3c2c-4209-a34c-e1794cd0f10f
 
 The broom in the menu bar shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
 
@@ -48,41 +48,33 @@ rm -rf /Applications/Broom.app ~/Library/Application\ Support/Broom
 
 Broom reads your past Claude Code chats and raises the few worth a decision:
 
-<img src="docs/tour/inbox.png" width="380" alt="The Inbox. Possible duplicates: you have started 3 chats about Supabase RLS policies for teams since Oct 22, with Review and merge and Not the same. Open loops: one chat ended on a question, one on I will do this tomorrow. Quiet for 3 months: mobile, 2 chats, with Archive.">
+<img src="docs/tour/inbox.png" width="480" alt="The Inbox. Possible duplicates: you have started 3 chats about Supabase RLS policies for teams since Oct 22, with Review and merge and Not the same. Open loops: one chat ended on a question, one on I will do this tomorrow. Quiet for 3 months: mobile, 2 chats, with Archive.">
 
-- **Possible duplicates.** Chats from the last 30 days that open with the same prompt, or a very similar one. **Review & merge** lists them and folds them into one row, newest on top. **Not the same** stops Broom raising them together again.
-- **Open loops.** Chats that ended on a question from Claude, or on your own "I'll do this later", and have been quiet for a day or more. Tick the circle when it is done; it comes back if the chat picks up again.
-- **Quiet for 3 months.** Projects whose chats nobody has touched in 90 days, with **Archive** to take them out of the Inbox. Search still finds them.
+Duplicates are chats from the last 30 days that open with the same or a very similar prompt. **Review & merge** folds them into one row, newest on top, and **Not the same** is remembered. An open loop comes back if its chat picks up again, and an archived project stays in search.
 
 **Sweep now** goes through the same items one card at a time, like a weekly review: merge, archive or reopen, or skip a card until next week.
 
-<img src="docs/tour/sweep.png" width="380" alt="The weekly sweep at card 1 of 4: Merge duplicates, 3 chats about Supabase RLS policies for teams, listed with their dates, a note that nothing gets deleted and merges can be undone for 30 days, and the buttons Skip, Edit and Merge.">
+<img src="docs/tour/sweep.png" width="480" alt="The weekly sweep at card 1 of 4: Merge duplicates, 3 chats about Supabase RLS policies for teams, listed with their dates, a note that nothing gets deleted and merges can be undone for 30 days, and the buttons Skip, Edit and Merge.">
 
 ### Live: the sessions open right now
 
 Every Claude Code session on your Mac, from any terminal, your editor or the Claude desktop app, sorted by what it needs from you:
 
-<img src="docs/tour/live.png" width="380" alt="The Live tab. Waiting on you: Store directory, Texas batch, asking whether to add 42 stores or review 9 first, paused 6 minutes ago, with Open chat and Snooze 1h. Running: Scraper backfill at step 6 of 9 with a progress bar, two more sessions, and a scheduled task. Done since you looked: Menu bar app design notes, finished 4 minutes ago.">
+<img src="docs/tour/live.png" width="480" alt="The Live tab. Waiting on you: Store directory, Texas batch, asking whether to add 42 stores or review 9 first, paused 6 minutes ago, with Open chat and Snooze 1h. Running: Scraper backfill at step 6 of 9 with a progress bar, two more sessions, and a scheduled task. Done since you looked: Menu bar app design notes, finished 4 minutes ago.">
 
-- **Waiting on you.** The session stopped to ask for a permission or an answer. The card shows what it asked and how long ago. **Open chat** jumps to it; **Snooze 1h** moves it out of the way and keeps it quiet.
-- **Running.** Each session shows its project and how long it has been working. When Claude keeps a task list, you also see "step 6 of 9" and a progress bar.
-- **Done since you looked.** Sessions that finished while you were away. They leave this section once you have seen them.
-- **Quick chats.** One question, no tools. They fade after a day, so they never crowd out real work.
-- **Quiet, still open** and **Claude Code with no session.** Sessions idle for two hours whose process is still alive, and Claude Code processes that belong to no session at all, each with **Stop**.
-
-The footer counts what is open, and **Stop all agents** interrupts every running or waiting session after you confirm. Stopping sends the same interrupt as pressing Control-C in the session, never a force quit.
+A finished session leaves Done once you have seen it. Further down, quick chats (one question, no tools) fade after a day, and sessions idle for two hours or Claude Code processes with no session each get **Stop**. **Stop all agents** in the footer interrupts every running or waiting session after you confirm, like pressing Control-C, never a force quit.
 
 ### History
 
-Every merge, archive and "done" from the last 30 days, grouped by day, saying what changed and where. Open a row to see the chats it touched; right-click it to undo.
+Every merge, archive and "done" from the last 30 days, grouped by day. Open a row to see the chats it touched.
 
-<img src="docs/tour/history.png" width="380" alt="History: last swept 6 days ago. Today: Marked Send vendor follow-ups done, and Merged 2 chats in mobile. Yesterday: Archived 2 chats in api-server. Each row shows its time.">
+<img src="docs/tour/history.png" width="480" alt="History: last swept 6 days ago. Today: Marked Send vendor follow-ups done, and Merged 2 chats in mobile. Yesterday: Archived 2 chats in api-server. Each row shows its time.">
 
 ### Search
 
 Press ⌥⌘B anywhere, or type in the popover's search field, to find any past chat by what you typed or what Claude replied. It matches the words, and the meaning when you remember the idea but not the words. Open a result to resume the chat, or copy the command that resumes it.
 
-<img src="docs/tour/search.png" width="380" alt="Search for search ranking weights in the popover, listing four past chats with their project, a line from the conversation and the date, and the hints Return to open and Command-C to copy the resume command.">
+<img src="docs/tour/search.png" width="480" alt="Search for search ranking weights in the popover, listing four past chats with their project, a line from the conversation and the date, and the hints Return to open and Command-C to copy the resume command.">
 
 ### Notifications and settings
 
