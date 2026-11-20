@@ -22,7 +22,7 @@ Those two complaints became Broom's two halves: **Live** for the sessions open r
 
 ## A tour
 
-Broom lives in the menu bar. Click the broom and a popover opens with a search field and three tabs: Live, Inbox and History.
+Broom lives in the menu bar. Click the broom and a popover opens with a search field and three tabs: Inbox, Live and History. It opens on the Inbox.
 
 ### The menu bar
 
