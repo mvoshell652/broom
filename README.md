@@ -2,81 +2,29 @@
 
 [![tests](https://github.com/mvoshell652/broom/actions/workflows/ci.yml/badge.svg)](https://github.com/mvoshell652/broom/actions/workflows/ci.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-lightgrey)
 
-**Know which Claude Code session needs you, from the menu bar.**
+Broom is a menu bar app for Claude Code. It finds the chats you started more than once, the ones left hanging and the ones gone quiet, and helps you tidy them. It also shows which open session is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you.
 
-Broom shows which of your open Claude Code sessions is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you. It also helps you tidy the chats piling up behind them.
+https://github.com/user-attachments/assets/5336f455-8ff2-4be1-b472-2bb62e3299ae
 
-<img src="docs/demo.gif" width="420" alt="A 20-second tour of Broom with sample data. Live shows a session waiting on you with its question, three running sessions with progress, and one done. Inbox shows possible duplicates, open loops and quiet projects. The weekly sweep shows a card to merge three duplicate chats. History lists changes by day. Typing ranking weights in the search field lists four matching past chats.">
+The broom in the menu bar shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
+
+<img src="docs/tour/menu-bar.png" width="216" alt="Four states of the menu bar item: the broom alone, the broom with 2, the broom with 2 and an amber dot, and the broom with 12 and an amber dot.">
+
+Click it and a popover opens on the Inbox, with a search field and three tabs: Inbox, Live and History.
+
+## Why
+
+Broom started in a LinkedIn thread. A product designer wished Claude had a "clean up time": a way to sort stray chats and catch the ones she had started more than once. A design leader added the other half. With four to six chats open, he kept losing track of which were long-running agent loops and which were quick questions. I had both problems, so I said I would build something.
+
+Those two complaints became Broom's two halves: the **Inbox** for the chats piling up, and **Live** for the sessions open right now.
+
+## Install
 
 ```
 d=$(mktemp -d) && git clone --depth 1 https://github.com/mvoshell652/broom "$d" && sh "$d/install.sh"
 ```
 
-Free and open source.
-
-## Where it came from
-
-Broom started in a LinkedIn thread. A product designer wished Claude had a "clean up time": a way to sort stray chats and catch the ones she had started more than once. A design leader added the other half. With four to six chats open, he kept losing track of which were long-running agent loops and which were quick questions. I had both problems, so I said I would build something.
-
-Those two complaints became Broom's two halves: **Live** for the sessions open right now, and the **Inbox** for everything before them.
-
-## A tour
-
-Broom lives in the menu bar. Click the broom and a popover opens with a search field and three tabs: Inbox, Live and History. It opens on the Inbox.
-
-### The menu bar
-
-The broom shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
-
-<img src="docs/tour/menu-bar.png" width="216" alt="Four states of the menu bar item: the broom alone, the broom with 2, the broom with 2 and an amber dot, and the broom with 12 and an amber dot.">
-
-### Live: the sessions open right now
-
-Every Claude Code session on your Mac, from any terminal, your editor or the Claude desktop app, sorted by what it needs from you:
-
-<img src="docs/tour/live.png" width="368" alt="The Live tab. Waiting on you: Store directory, Texas batch, asking whether to add 42 stores or review 9 first, paused 6 minutes ago, with Open chat and Snooze 1h. Running: Scraper backfill at step 6 of 9 with a progress bar, two more sessions, and a scheduled task. Done since you looked: Menu bar app design notes, finished 4 minutes ago.">
-
-- **Waiting on you.** The session stopped to ask for a permission or an answer. The card shows what it asked and how long ago. **Open chat** jumps to it; **Snooze 1h** moves it out of the way and keeps it quiet.
-- **Running.** Each session shows its project and how long it has been working. When Claude keeps a task list, you also see "step 6 of 9" and a progress bar.
-- **Done since you looked.** Sessions that finished while you were away. They leave this section once you have seen them.
-- **Quick chats.** One question, no tools. They fade after a day, so they never crowd out real work.
-- **Quiet, still open** and **Claude Code with no session.** Sessions idle for two hours whose process is still alive, and Claude Code processes that belong to no session at all, each with **Stop**.
-
-The footer counts what is open, and **Stop all agents** interrupts every running or waiting session after you confirm. Stopping sends the same interrupt as pressing Control-C in the session, never a force quit.
-
-### Inbox: the chats behind them
-
-Broom reads your past Claude Code chats and raises the few worth a decision:
-
-<img src="docs/tour/inbox.png" width="368" alt="The Inbox. Possible duplicates: you have started 3 chats about Supabase RLS policies for teams since Oct 22, with Review and merge and Not the same. Open loops: one chat ended on a question, one on I will do this tomorrow. Quiet for 3 months: mobile, 2 chats, with Archive.">
-
-- **Possible duplicates.** Chats from the last 30 days that open with the same prompt, or a very similar one. **Review & merge** lists them and folds them into one row, newest on top. **Not the same** stops Broom raising them together again.
-- **Open loops.** Chats that ended on a question from Claude, or on your own "I'll do this later", and have been quiet for a day or more. Tick the circle when it is done; it comes back if the chat picks up again.
-- **Quiet for 3 months.** Projects whose chats nobody has touched in 90 days, with **Archive** to take them out of the Inbox. Search still finds them.
-
-**Sweep now** goes through the same items one card at a time, like a weekly review: merge, archive or reopen, or skip a card until next week.
-
-<img src="docs/tour/sweep.png" width="368" alt="The weekly sweep at card 1 of 4: Merge duplicates, 3 chats about Supabase RLS policies for teams, listed with their dates, a note that nothing gets deleted and merges can be undone for 30 days, and the buttons Skip, Edit and Merge.">
-
-### History
-
-Every merge, archive and "done" from the last 30 days, grouped by day, saying what changed and where. Open a row to see the chats it touched; right-click it to undo.
-
-<img src="docs/tour/history.png" width="368" alt="History: last swept 6 days ago. Today: Marked Send vendor follow-ups done, and Merged 2 chats in mobile. Yesterday: Archived 2 chats in api-server. Each row shows its time.">
-
-### Search
-
-Press ⌥⌘B anywhere, or type in the popover's search field, to find any past chat by what you typed or what Claude replied. It matches the words, and the meaning when you remember the idea but not the words. Open a result to resume the chat, or copy the command that resumes it.
-
-<img src="docs/tour/search.png" width="368" alt="Search for search ranking weights in the popover, listing four past chats with their project, a line from the conversation and the date, and the hints Return to open and Command-C to copy the resume command.">
-
-### Notifications and settings
-
-Broom notifies you when a session is waiting on you, with **Open** and **Snooze 1h** on the notification. It can notify you when a session finishes too; that one is off until you turn it on. Settings also has opening at login, which terminal ended sessions reopen in, the Claude Code connection, and your search index.
-
-## Install
-
-You need macOS 14 or later, [Xcode](https://apps.apple.com/app/xcode/id497799835) 26 or later, and Claude Code. Run the line above. It builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it.
+You need macOS 14 or later, [Xcode](https://apps.apple.com/app/xcode/id497799835) 26 or later, and Claude Code. The script builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it. Free and open source.
 
 Then connect Claude Code, so a waiting session shows right away and can notify you:
 
@@ -93,6 +41,52 @@ Broom works without this step too, from the session transcripts, a little slower
 ```
 rm -rf /Applications/Broom.app ~/Library/Application\ Support/Broom
 ```
+
+## A tour
+
+### Inbox: the chats piling up
+
+Broom reads your past Claude Code chats and raises the few worth a decision:
+
+<img src="docs/tour/inbox.png" width="380" alt="The Inbox. Possible duplicates: you have started 3 chats about Supabase RLS policies for teams since Oct 22, with Review and merge and Not the same. Open loops: one chat ended on a question, one on I will do this tomorrow. Quiet for 3 months: mobile, 2 chats, with Archive.">
+
+- **Possible duplicates.** Chats from the last 30 days that open with the same prompt, or a very similar one. **Review & merge** lists them and folds them into one row, newest on top. **Not the same** stops Broom raising them together again.
+- **Open loops.** Chats that ended on a question from Claude, or on your own "I'll do this later", and have been quiet for a day or more. Tick the circle when it is done; it comes back if the chat picks up again.
+- **Quiet for 3 months.** Projects whose chats nobody has touched in 90 days, with **Archive** to take them out of the Inbox. Search still finds them.
+
+**Sweep now** goes through the same items one card at a time, like a weekly review: merge, archive or reopen, or skip a card until next week.
+
+<img src="docs/tour/sweep.png" width="380" alt="The weekly sweep at card 1 of 4: Merge duplicates, 3 chats about Supabase RLS policies for teams, listed with their dates, a note that nothing gets deleted and merges can be undone for 30 days, and the buttons Skip, Edit and Merge.">
+
+### Live: the sessions open right now
+
+Every Claude Code session on your Mac, from any terminal, your editor or the Claude desktop app, sorted by what it needs from you:
+
+<img src="docs/tour/live.png" width="380" alt="The Live tab. Waiting on you: Store directory, Texas batch, asking whether to add 42 stores or review 9 first, paused 6 minutes ago, with Open chat and Snooze 1h. Running: Scraper backfill at step 6 of 9 with a progress bar, two more sessions, and a scheduled task. Done since you looked: Menu bar app design notes, finished 4 minutes ago.">
+
+- **Waiting on you.** The session stopped to ask for a permission or an answer. The card shows what it asked and how long ago. **Open chat** jumps to it; **Snooze 1h** moves it out of the way and keeps it quiet.
+- **Running.** Each session shows its project and how long it has been working. When Claude keeps a task list, you also see "step 6 of 9" and a progress bar.
+- **Done since you looked.** Sessions that finished while you were away. They leave this section once you have seen them.
+- **Quick chats.** One question, no tools. They fade after a day, so they never crowd out real work.
+- **Quiet, still open** and **Claude Code with no session.** Sessions idle for two hours whose process is still alive, and Claude Code processes that belong to no session at all, each with **Stop**.
+
+The footer counts what is open, and **Stop all agents** interrupts every running or waiting session after you confirm. Stopping sends the same interrupt as pressing Control-C in the session, never a force quit.
+
+### History
+
+Every merge, archive and "done" from the last 30 days, grouped by day, saying what changed and where. Open a row to see the chats it touched; right-click it to undo.
+
+<img src="docs/tour/history.png" width="380" alt="History: last swept 6 days ago. Today: Marked Send vendor follow-ups done, and Merged 2 chats in mobile. Yesterday: Archived 2 chats in api-server. Each row shows its time.">
+
+### Search
+
+Press ⌥⌘B anywhere, or type in the popover's search field, to find any past chat by what you typed or what Claude replied. It matches the words, and the meaning when you remember the idea but not the words. Open a result to resume the chat, or copy the command that resumes it.
+
+<img src="docs/tour/search.png" width="380" alt="Search for search ranking weights in the popover, listing four past chats with their project, a line from the conversation and the date, and the hints Return to open and Command-C to copy the resume command.">
+
+### Notifications and settings
+
+Broom notifies you when a session is waiting on you, with **Open** and **Snooze 1h** on the notification. It can notify you when a session finishes too; that one is off until you turn it on. Settings also has opening at login, which terminal ended sessions reopen in, the Claude Code connection, and your search index.
 
 ## Questions
 
@@ -130,7 +124,7 @@ swift build && .build/debug/Broom --preview
 scripts/make-app.sh
 ```
 
-`--preview` opens the popover with sample data in a window; add `--tab inbox` or `--tab history`, `--dark`, or `--deck` for the sweep. `--render <folder>` writes PNGs of every screen. These variables point Broom away from your real data, so experiments never touch it:
+`--preview` opens the popover with sample data in a window; add `--tab live` or `--tab history`, `--dark`, or `--deck` for the sweep. `--render <folder>` writes PNGs of every screen. These variables point Broom away from your real data, so experiments never touch it:
 
 | Variable | Replaces |
 |---|---|

@@ -11,14 +11,14 @@ struct PreviewApp: App {
     /// Whether `--demo` has the sweep's deck open.
     @State private var showsDemoDeck = false
 
-    /// `--tab inbox|history` picks the tab the window opens on.
+    /// `--tab live|history` picks the tab the window opens on; like the app, it opens on the Inbox otherwise.
     private static var launchTab: PopoverTab {
         let arguments = CommandLine.arguments
-        guard let index = arguments.firstIndex(of: "--tab"), arguments.indices.contains(index + 1) else { return .live }
+        guard let index = arguments.firstIndex(of: "--tab"), arguments.indices.contains(index + 1) else { return .inbox }
         return switch arguments[index + 1] {
-        case "inbox": .inbox
+        case "live": .live
         case "history": .history
-        default: .live
+        default: .inbox
         }
     }
     var body: some Scene {
@@ -124,18 +124,19 @@ struct PreviewApp: App {
         }
     }
 
-    /// The `--demo` tour, once: Live, Inbox, a sweep card, History, then a search typed a word at a time.
+    /// The `--demo` tour, once, in tab order: the Inbox, a sweep card, Live, History, then a search typed a word at a time.
     private func playDemo() async {
         func hold(_ seconds: Double) async { try? await Task.sleep(for: .seconds(seconds)) }
-        await hold(5)
         tab = .inbox
-        await hold(3)
+        await hold(5)
         showsDemoDeck = true
         await hold(3)
         showsDemoDeck = false
+        tab = .live
+        await hold(3)
         tab = .history
         await hold(3)
-        tab = .live
+        tab = .inbox
         await hold(1)
         // A word at a time: search matches whole words, so a half-typed word would show no results.
         for word in ["ranking", " weights"] {
