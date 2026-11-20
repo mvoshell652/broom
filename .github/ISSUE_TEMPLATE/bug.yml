@@ -1,0 +1,41 @@
+name: Something is not working
+description: A session shows in the wrong place, the popover misbehaves, or the build fails
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead. A screenshot helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: hooks
+    attributes:
+      label: Is Claude Code connected?
+      description: Broom's settings show this under Claude Code.
+      options:
+        - Yes, hooks are connected
+        - No, Broom works from transcripts only
+        - I don't know
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where you run Claude Code
+      multiple: true
+      options:
+        - Terminal
+        - Claude desktop app
+        - VS Code or JetBrains
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: "macOS, `xcodebuild -version` and `claude --version`"
+      placeholder: "macOS 26.1, Xcode 26.1, Claude Code 2.1.300"
+    validations:
+      required: true

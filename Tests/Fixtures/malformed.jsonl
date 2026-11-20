@@ -1,0 +1,13 @@
+{"parentUuid":null,"isSidechain":false,"userType":"external","cwd":"/Users/dev/code/chaos","sessionId":"66666666-6666-4666-8666-666666666666","version":"2.1.285","gitBranch":"main","entrypoint":"cli","type":"user","uuid":"66666666-0001","timestamp":"2026-11-14T10:00:00.000Z","message":{"role":"user","content":"Summarise the README"}}
+{not json at all
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"cut off
+
+[1,2,3]
+   
+{"type":"hologram","payload":{"x":1},"sessionId":"66666666-6666-4666-8666-666666666666"}
+{"type": "user", "sessionId": "66666666-6666-4666-8666-666666666666", "timestamp": "2026-11-14T10:00:02.000Z"}
+{"type": "assistant", "sessionId": "66666666-6666-4666-8666-666666666666", "timestamp": "2026-11-14T10:00:03.000Z", "message": {"role": "assistant", "content": "plain string"}}
+{"type": "assistant", "sessionId": "66666666-6666-4666-8666-666666666666", "timestamp": "yesterday-ish", "message": {"role": "assistant", "content": [{"type": "tool_use", "name": "NoID"}]}}
+{"type": "user", "sessionId": "66666666-6666-4666-8666-666666666666", "timestamp": "2026-11-14T10:00:04.000Z", "message": {"role": "user", "content": [{"type": "tool_result"}]}}
+{"parentUuid":"66666666-0001","isSidechain":false,"userType":"external","cwd":"/Users/dev/code/chaos","sessionId":"66666666-6666-4666-8666-666666666666","version":"2.1.285","gitBranch":"main","entrypoint":"cli","type":"assistant","uuid":"66666666-0002","timestamp":"2026-11-14T10:00:09.000Z","requestId":"req_0002","message":{"id":"msg_0002","type":"message","role":"assistant","model":"claude-sonnet-5-5","content":[{"type":"text","text":"The README describes a chaos testing tool."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":12,"output_tokens":34}}}
+{"type":"user","message":{"role":"user","content":"this line has no newline yet
