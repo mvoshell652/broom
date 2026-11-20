@@ -4,7 +4,7 @@
 
 **Know which Claude Code session needs you, from the menu bar.**
 
-You have five Claude Code sessions open. One stopped ten minutes ago to ask a question, one finished while you were in a meeting, and three are still working. Broom tells you which is which in one glance, and takes you straight to the one that is waiting.
+Broom shows which of your open Claude Code sessions is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you. It also helps you tidy the chats piling up behind them.
 
 <img src="docs/demo.gif" width="420" alt="A 20-second tour of Broom with sample data. Live shows a session waiting on you with its question, three running sessions with progress, and one done. Inbox shows possible duplicates, open loops and quiet projects. The weekly sweep shows a card to merge three duplicate chats. History lists changes by day. Typing ranking weights in the search field lists four matching past chats.">
 
@@ -13,6 +13,12 @@ d=$(mktemp -d) && git clone --depth 1 https://github.com/mvoshell652/broom "$d" 
 ```
 
 Free and open source.
+
+## Where it came from
+
+Broom started in a LinkedIn thread. A product designer wished Claude had a "clean up time": a way to sort stray chats and catch the ones she had started more than once. A design leader added the other half. With four to six chats open, he kept losing track of which were long-running agent loops and which were quick questions. I had both problems, so I said I would build something.
+
+Those two complaints became Broom's two halves: **Live** for the sessions open right now, and the **Inbox** for everything before them.
 
 ## What you get
 
