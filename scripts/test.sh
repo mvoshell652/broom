@@ -18,11 +18,16 @@ case "$developer" in
     fi
     frameworks="$(dirname "$framework")"
     set -- -Xswiftc -F -Xswiftc "$frameworks" -Xlinker -rpath -Xlinker "$frameworks" "$@"
+    # Swift Testing loads this at run time; add its folder to the test bundle's search path when it lives elsewhere.
+    interop="$(find "$developer" -name 'lib_TestingInterop.dylib' -print -quit 2>/dev/null)"
+    if [ -n "$interop" ]; then
+        set -- -Xlinker -rpath -Xlinker "$(dirname "$interop")" "$@"
+    fi
     plugin="$(find "$developer" -name 'libTestingMacros.dylib' -print -quit 2>/dev/null)"
     if [ -n "$plugin" ]; then
         set -- -Xswiftc -plugin-path -Xswiftc "$(dirname "$plugin")" "$@"
     fi
-    echo "Swift Testing from $frameworks${plugin:+, macros from $(dirname "$plugin")}"
+    echo "Swift Testing from $frameworks${plugin:+, macros from $(dirname "$plugin")}${interop:+, interop from $(dirname "$interop")}"
     ;;
 esac
 
