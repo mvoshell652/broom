@@ -28,9 +28,13 @@ Broom lives in the menu bar. Click the broom and a popover opens with a search f
 
 The broom shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
 
+<img src="docs/tour/menu-bar.png" width="216" alt="Four states of the menu bar item: the broom alone, the broom with 2, the broom with 2 and an amber dot, and the broom with 12 and an amber dot.">
+
 ### Live: the sessions open right now
 
 Every Claude Code session on your Mac, from any terminal, your editor or the Claude desktop app, sorted by what it needs from you:
+
+<img src="docs/tour/live.png" width="368" alt="The Live tab. Waiting on you: Store directory, Texas batch, asking whether to add 42 stores or review 9 first, paused 6 minutes ago, with Open chat and Snooze 1h. Running: Scraper backfill at step 6 of 9 with a progress bar, two more sessions, and a scheduled task. Done since you looked: Menu bar app design notes, finished 4 minutes ago.">
 
 - **Waiting on you.** The session stopped to ask for a permission or an answer. The card shows what it asked and how long ago. **Open chat** jumps to it; **Snooze 1h** moves it out of the way and keeps it quiet.
 - **Running.** Each session shows its project and how long it has been working. When Claude keeps a task list, you also see "step 6 of 9" and a progress bar.
@@ -44,19 +48,27 @@ The footer counts what is open, and **Stop all agents** interrupts every running
 
 Broom reads your past Claude Code chats and raises the few worth a decision:
 
+<img src="docs/tour/inbox.png" width="368" alt="The Inbox. Possible duplicates: you have started 3 chats about Supabase RLS policies for teams since Oct 22, with Review and merge and Not the same. Open loops: one chat ended on a question, one on I will do this tomorrow. Quiet for 3 months: mobile, 2 chats, with Archive.">
+
 - **Possible duplicates.** Chats from the last 30 days that open with the same prompt, or a very similar one. **Review & merge** lists them and folds them into one row, newest on top. **Not the same** stops Broom raising them together again.
 - **Open loops.** Chats that ended on a question from Claude, or on your own "I'll do this later", and have been quiet for a day or more. Tick the circle when it is done; it comes back if the chat picks up again.
 - **Quiet for 3 months.** Projects whose chats nobody has touched in 90 days, with **Archive** to take them out of the Inbox. Search still finds them.
 
 **Sweep now** goes through the same items one card at a time, like a weekly review: merge, archive or reopen, or skip a card until next week.
 
+<img src="docs/tour/sweep.png" width="368" alt="The weekly sweep at card 1 of 4: Merge duplicates, 3 chats about Supabase RLS policies for teams, listed with their dates, a note that nothing gets deleted and merges can be undone for 30 days, and the buttons Skip, Edit and Merge.">
+
 ### History
 
 Every merge, archive and "done" from the last 30 days, grouped by day, saying what changed and where. Open a row to see the chats it touched; right-click it to undo.
 
+<img src="docs/tour/history.png" width="368" alt="History: last swept 6 days ago. Today: Marked Send vendor follow-ups done, and Merged 2 chats in mobile. Yesterday: Archived 2 chats in api-server. Each row shows its time.">
+
 ### Search
 
 Press ⌥⌘B anywhere, or type in the popover's search field, to find any past chat by what you typed or what Claude replied. It matches the words, and the meaning when you remember the idea but not the words. Open a result to resume the chat, or copy the command that resumes it.
+
+<img src="docs/tour/search.png" width="368" alt="Search for search ranking weights in the popover, listing four past chats with their project, a line from the conversation and the date, and the hints Return to open and Command-C to copy the resume command.">
 
 ### Notifications and settings
 
