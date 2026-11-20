@@ -9,9 +9,12 @@ if [ "$(uname)" != "Darwin" ]; then
     echo "Broom runs on macOS only." >&2
     exit 1
 fi
-major=$(sw_vers -productVersion | cut -d. -f1)
-if [ "$major" -lt 14 ]; then
-    echo "Broom needs macOS 14 or later; this Mac has $(sw_vers -productVersion)." >&2
+# Broom runs on macOS 14, but building it needs the version 26 tools, and the oldest of those need macOS 15.6.
+version=$(sw_vers -productVersion)
+major=$(echo "$version" | cut -d. -f1)
+minor=$(echo "$version" | cut -d. -f2)
+if [ "$major" -lt 15 ] || { [ "$major" -eq 15 ] && [ "${minor:-0}" -lt 6 ]; }; then
+    echo "Building Broom needs macOS Sequoia 15.6 or later; this Mac has $version." >&2
     exit 1
 fi
 if ! xcrun --find swift >/dev/null 2>&1; then
