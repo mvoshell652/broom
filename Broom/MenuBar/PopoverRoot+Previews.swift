@@ -1,3 +1,6 @@
+// The previews build in debug only: the `#Preview` macro's plugin ships with Xcode, and release builds must work with
+// the Command Line Tools alone.
+#if DEBUG
 import BroomCore
 import SwiftUI
 
@@ -62,3 +65,4 @@ import SwiftUI
     }
     .padding()
 }
+#endif
