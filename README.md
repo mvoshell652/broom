@@ -4,7 +4,7 @@
 
 Broom is a menu bar app for Claude Code. It finds the chats you started more than once, the ones left hanging and the ones gone quiet, and helps you tidy them. It also shows which open session is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you.
 
-https://github.com/user-attachments/assets/d06d7507-3c2c-4209-a34c-e1794cd0f10f
+https://github.com/user-attachments/assets/c993a525-4387-41c3-870d-58e76d571415
 
 The broom in the menu bar shows how many sessions are running, and gets an amber dot when one is waiting on you. That is usually all you need to see: no dot, nothing needs you.
 
