@@ -1,6 +1,6 @@
 # Broom
 
-[![tests](https://github.com/mvoshell652/broom/actions/workflows/ci.yml/badge.svg)](https://github.com/mvoshell652/broom/actions/workflows/ci.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-lightgrey)
+[![tests](https://github.com/mvoshell652/broom/actions/workflows/ci.yml/badge.svg)](https://github.com/mvoshell652/broom/actions/workflows/ci.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![macOS 15.6+](https://img.shields.io/badge/macOS-15.6%2B-lightgrey)
 
 Broom is a menu bar app for Claude Code. It finds the chats you started more than once, the ones left hanging and the ones gone quiet, and helps you tidy them. It also shows which open session is waiting on you, which are still working and which have finished, and takes you straight to the one that needs you.
 
@@ -24,7 +24,7 @@ Those two complaints became Broom's two halves: the **Inbox** for the chats pili
 d=$(mktemp -d) && git clone --depth 1 https://github.com/mvoshell652/broom "$d" && sh "$d/install.sh"
 ```
 
-You need macOS 14 or later, Claude Code, and Apple's Command Line Tools 26 or later. Install the tools with `xcode-select --install`; Xcode 26 works too, but you don't need it. The script builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it. Free and open source.
+You need macOS Sequoia 15.6 or later, Claude Code, and Apple's Command Line Tools 26 or later. Install the tools with `xcode-select --install`; Xcode 26 works too, but you don't need it. Broom itself runs on macOS 14, but the version 26 tools that build it need 15.6. The script builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it. Free and open source.
 
 Then connect Claude Code, so a waiting session shows right away and can notify you:
 
