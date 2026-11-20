@@ -24,7 +24,7 @@ Those two complaints became Broom's two halves: the **Inbox** for the chats pili
 d=$(mktemp -d) && git clone --depth 1 https://github.com/mvoshell652/broom "$d" && sh "$d/install.sh"
 ```
 
-You need macOS 14 or later, [Xcode](https://apps.apple.com/app/xcode/id497799835) 26 or later, and Claude Code. The script builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it. Free and open source.
+You need macOS 14 or later, Claude Code, and Apple's Command Line Tools 26 or later. Install the tools with `xcode-select --install`; Xcode 26 works too, but you don't need it. The script builds Broom on your Mac, copies it to `/Applications` (or `~/Applications` when that is not writable) and opens it. Free and open source.
 
 Then connect Claude Code, so a waiting session shows right away and can notify you:
 
