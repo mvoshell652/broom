@@ -111,7 +111,7 @@ Claude Code runs a small helper, `broom-hook`, for each hook event: a session st
 ## Develop
 
 ```
-swift test
+scripts/test.sh
 swift build && .build/debug/Broom --preview
 scripts/make-app.sh
 ```

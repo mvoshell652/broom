@@ -5,7 +5,7 @@ Bug reports, ideas and pull requests are welcome.
 ## Run it from a checkout
 
 ```
-swift test
+scripts/test.sh
 swift build && .build/debug/Broom --preview
 ```
 
