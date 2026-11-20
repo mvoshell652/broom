@@ -7,8 +7,8 @@ extension EnvironmentValues {
         set { self[AllowsSystemGlassKey.self] = newValue }
     }
 
-    // A key written out rather than `@Entry`: that macro's plugin ships with Xcode only, and Broom must build with the
-    // Command Line Tools alone.
+    // A key written out rather than `@Entry`: that macro's plugin is missing from the Command Line Tools, which are all
+    // Broom needs to build.
     private struct AllowsSystemGlassKey: EnvironmentKey {
         static let defaultValue = true
     }

@@ -24,7 +24,7 @@ fi
 
 echo "Building Broom. The first build fetches one dependency (GRDB) and takes a few minutes."
 if ! scripts/make-app.sh build; then
-    echo "The build failed. Broom needs the Command Line Tools or Xcode, version 26 or later: check with 'swift --version' (Swift 6.2 or later)." >&2
+    echo "The build failed. Broom needs Apple's Command Line Tools 26 or later: check with 'swift --version' (Swift 6.2 or later)." >&2
     exit 1
 fi
 

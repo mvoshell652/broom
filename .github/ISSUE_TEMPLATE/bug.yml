@@ -35,7 +35,7 @@ body:
     id: versions
     attributes:
       label: Versions
-      description: "macOS, `xcodebuild -version` and `claude --version`"
-      placeholder: "macOS 26.1, Xcode 26.1, Claude Code 2.1.300"
+      description: "macOS, `swift --version` and `claude --version`"
+      placeholder: "macOS 26.1, Swift 6.3, Claude Code 2.1.300"
     validations:
       required: true
