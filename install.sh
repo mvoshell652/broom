@@ -15,13 +15,13 @@ if [ "$major" -lt 14 ]; then
     exit 1
 fi
 if ! xcrun --find swift >/dev/null 2>&1; then
-    echo "Broom is built with Xcode 26 or later. Install Xcode, open it once, then run this again." >&2
+    echo "Broom is built with Apple's Command Line Tools 26 or later. Install them with 'xcode-select --install', then run this again." >&2
     exit 1
 fi
 
 echo "Building Broom. The first build fetches one dependency (GRDB) and takes a few minutes."
 if ! scripts/make-app.sh build; then
-    echo "The build failed. Broom needs Xcode 26 or later: check with 'xcodebuild -version'." >&2
+    echo "The build failed. Broom needs the Command Line Tools or Xcode, version 26 or later: check with 'swift --version' (Swift 6.2 or later)." >&2
     exit 1
 fi
 
